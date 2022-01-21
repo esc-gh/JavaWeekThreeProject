@@ -38,11 +38,11 @@ public class Drink {
 		this.name = name;
 	}
 
-	public boolean isAlcholic() {
+	public boolean isAlcoholic() {
 		return alcoholic;
 	}
 
-	public void setAlcholic(boolean alcholic) {
+	public void setAlcoholic(boolean alcholic) {
 		this.alcoholic = alcholic;
 	}
 
