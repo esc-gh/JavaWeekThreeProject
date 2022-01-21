@@ -9,7 +9,7 @@ public class JDBC_Setup {
 	final String JDBC_Driver = "com.mysql.cj.jdbc.Driver";
 	final String db_url = "jdbc:mysql://localhost:3306/divebar";
 	final String user = "root";
-	final String password = "password here";
+	final String password = "Cooper2354";
 
 	Connection conn = null;
 
@@ -28,6 +28,7 @@ public class JDBC_Setup {
 		return conn;
 	}
 
+
 	public Drink returnResults(ResultSet resultSet) {
 		try {
 			int id = resultSet.getInt("id");
@@ -37,6 +38,7 @@ public class JDBC_Setup {
 			String type = resultSet.getString("type");
 			Drink drink = new Drink(id, name, alcholic, price, type);
 			return drink;
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

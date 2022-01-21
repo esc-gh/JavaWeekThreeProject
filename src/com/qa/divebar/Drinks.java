@@ -1,25 +1,27 @@
 package com.qa.divebar;
 
-public class Drink {
+public class Drinks {
 	private int id;
 	private String name;
-	private boolean alcoholic;
+	private boolean isAlcoholic;
 	private float price;
 	private String type;
 
-	public Drink(String name, boolean alcoholic, float price, String type) {
+	public Drinks(String name, boolean isAlcoholic, float price, String type) {
 		super();
 		this.name = name;
-		this.alcoholic = alcoholic;
+		this.isAlcoholic = isAlcoholic;
+		this.type = type;
 		this.price = price;
 	}
 
-	public Drink(int id, String name, boolean alcoholic, float price, String type) {
+	public Drinks(int id, String name, boolean isAlcoholic, float price, String type) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.alcoholic = alcoholic;
+		this.isAlcoholic = isAlcoholic;
 		this.price = price;
+		this.type = type;
 	}
 
 	public int getId() {
@@ -39,11 +41,11 @@ public class Drink {
 	}
 
 	public boolean isAlcoholic() {
-		return alcoholic;
+		return isAlcoholic;
 	}
 
-	public void setAlcoholic(boolean alcholic) {
-		this.alcoholic = alcholic;
+	public void setAlcoholic(boolean isAlcoholic) {
+		this.isAlcoholic = isAlcoholic;
 	}
 
 	public float getPrice() {
@@ -54,18 +56,17 @@ public class Drink {
 		this.price = price;
 	}
 
+	@Override
+	public String toString() {
+		return "Drinks [id=" + id + ", name=" + name + ", isAlcoholic=" + isAlcoholic + ", price=" + price + "]";
+	}
+
 	public String getType() {
 		return type;
 	}
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	@Override
-	public String toString() {
-		return "Pizza [id=" + id + ", name =" + name + ", alcoholic" + alcoholic + ", price =" + price + ", type = "
-				+ type + "]";
 	}
 
 }
