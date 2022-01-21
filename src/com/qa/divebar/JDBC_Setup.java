@@ -8,7 +8,6 @@ import java.sql.SQLException;
 public class JDBC_Setup {
 	final String JDBC_Driver = "com.mysql.cj.jdbc.Driver";
 	final String db_url = "jdbc:mysql://localhost:3306/divebar";
-
 	final String user = "root";
 	final String password = "Cooper2354";
 
@@ -29,25 +28,21 @@ public class JDBC_Setup {
 		return conn;
 	}
 
-	// string name
-	// boolean is alcoholic
-	// float price
-	// int id
-	// string type
 
-	public Drinks returnResults(ResultSet resultSet) {
+	public Drink returnResults(ResultSet resultSet) {
 		try {
 			int id = resultSet.getInt("id");
-			boolean isAlcoholic = resultSet.getBoolean("alcoholic");
+			String name = resultSet.getString("name");
+			boolean alcholic = resultSet.getBoolean("alcholic");
 			float price = resultSet.getFloat("price");
 			String type = resultSet.getString("type");
-			String name = resultSet.getString("name");
+			Drink drink = new Drink(id, name, alcholic, price, type);
+			return drink;
 
-			Drinks drinks = new Drinks(id, name, isAlcoholic, price, type);
-			return drinks;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
+
 }
