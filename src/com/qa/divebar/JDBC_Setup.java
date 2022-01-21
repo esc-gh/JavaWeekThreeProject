@@ -9,7 +9,7 @@ public class JDBC_Setup {
 	final String JDBC_Driver = "com.mysql.cj.jdbc.Driver";
 	final String db_url = "jdbc:mysql://localhost:3306/divebar";
 	final String user = "root";
-	final String password = "Cooper2354";
+	final String password = "ajhsgdukshygfkujhadg";
 
 	Connection conn = null;
 
