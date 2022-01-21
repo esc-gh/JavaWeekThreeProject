@@ -31,7 +31,7 @@ public class DrinksManager {
 		try {
 			conn = jdbc.connect();
 			PreparedStatement preStmt = conn
-					.prepareStatement("INSERT INTO pizzas (name, alcoholic, price, type) VALUES(?, ?, ?, ?)");
+					.prepareStatement("INSERT INTO drinks (name, alcoholic, price, type) VALUES(?, ?, ?, ?)");
 			preStmt.setString(1, drink.getName());
 			preStmt.setBoolean(2, drink.isAlcoholic());
 			preStmt.setFloat(3, drink.getPrice());
@@ -48,7 +48,7 @@ public class DrinksManager {
 			try {
 				conn = jdbc.connect();
 				PreparedStatement preStmt = conn
-						.prepareStatement("INSERT INTO pizzas (name, alcoholic, price, type) VALUES(?, ?, ?, ?)");
+						.prepareStatement("INSERT INTO drinks (name, alcoholic, price, type) VALUES(?, ?, ?, ?)");
 				preStmt.setString(1, drink.get(i).getName());
 				preStmt.setBoolean(2, drink.get(i).isAlcoholic());
 				preStmt.setFloat(3, drink.get(i).getPrice());
@@ -61,8 +61,46 @@ public class DrinksManager {
 		}
 	}
 
-	public void viewDrinkID(int id) {
+	public void viewDrinkId(int id) {
 		this.connStmt("SELECT * FROM drinks WHERE id = " + id);
+	}
+
+	public void viewDrinkName(String name) {
+		this.connStmt("SELECT * FROM drinks WHERE name = " + name);
+	}
+
+	public void viewAll() {
+		this.connStmt("SELECT * FROM drinks");
+	}
+
+	public void deleteDrinkID(int id) {
+		try {
+			conn = jdbc.connect();
+			PreparedStatement preStmt = conn.prepareStatement("DELETE FROM drinks where id = ?");
+			preStmt.setLong(1, id);
+			preStmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Drink updateDrink(int id, Drink drink) {
+		try {
+			conn = jdbc.connect();
+			String update = "UPDATE drinks SET name = ?, alcoholic = ?, price = ?, type = ? WHERE id = ?";
+			PreparedStatement preStmt = conn.prepareStatement(update);
+			preStmt.setString(1, drink.getName());
+			preStmt.setBoolean(2, drink.isAlcoholic());
+			preStmt.setFloat(3, drink.getPrice());
+			preStmt.setString(4, drink.getType());
+			preStmt.setInt(5, drink.getId());
+			preStmt.executeUpdate();
+			System.out.println("Pizza ID:" + id + " updated");
+			viewDrinkId(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
