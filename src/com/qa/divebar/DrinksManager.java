@@ -76,7 +76,7 @@ public class DrinksManager {
 	public void deleteDrinkID(int id) {
 		try {
 			conn = jdbc.connect();
-			PreparedStatement preStmt = conn.prepareStatement("DELETE FROM drinks where id = ?");
+			PreparedStatement preStmt = conn.prepareStatement("DELETE FROM drinks WHERE id = ?");
 			preStmt.setLong(1, id);
 			preStmt.executeUpdate();
 		} catch (SQLException e) {
@@ -95,7 +95,7 @@ public class DrinksManager {
 			preStmt.setString(4, drink.getType());
 			preStmt.setInt(5, drink.getId());
 			preStmt.executeUpdate();
-			System.out.println("Pizza ID:" + id + " updated");
+			System.out.println("Drink ID:" + id + " updated");
 			viewDrinkId(id);
 		} catch (SQLException e) {
 			e.printStackTrace();
